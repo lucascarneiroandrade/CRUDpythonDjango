@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{%block title %} Create {% endblock %}
+
+{% block body %}
+<h1>Você realmente deseja deletar os registros de {{ pessoa.nome }} {{ pessoa.sobrenome }} ?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button>Sim</button>
+</form>
+<a href="{% url 'list' %}"><button>Não</button></a>
+{% endblock %}

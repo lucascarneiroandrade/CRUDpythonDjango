@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{%block title %} Create {% endblock %}
+
+{% block body %}
+<h1>Listagem</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Sobrenome</th>
+        <th scope="col">Idade</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Deletar</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% csrf_token %}
+        {% for pessoa in pessoa %}
+        <tr>
+            <td>{{pessoa.nome}}</td>
+            <td>{{pessoa.sobrenome}}</td>
+            <td>{{pessoa.idade}}</td>
+            <td><a href="{% url 'update' pessoa.id %}">Editar</a></td>
+            <td><a href="{% url 'delete' pessoa.id %}">Deletar</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'create' %}"><button type="submit">Criar</button></a>
+{% endblock %}
